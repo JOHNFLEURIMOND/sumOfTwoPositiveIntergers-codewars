@@ -1,47 +1,49 @@
-![Codewars](img/sumOf2.png)
+![Codewars](img/exesAndOhs.png)
 
 # My Awesome Project
 Question:
-Create a function that returns the sum of the two lowest positive numbers given an array of minimum 4 integers. No floats or empty arrays will be passed.
+Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
 
-For example, when an array is passed like [19,5,42,2,77], the output should be 7.
+Examples input/output:
 
-[10,343445353,3453445,3453545353453] should return 3453455.
+XO("ooxx") => true
+XO("xooxx") => false
+XO("ooxXm") => true
+XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+XO("zzoo") => false
 
-Hint: Do not modify the original array.
-
-In this Codewars challenge, I received a question involving arrays.
+In this Codewars challenge, I received a question that must return a boolean and be sentitive
 
 ## How It's Made
- I decided to grab the last two numbers with minNums, which returns an array of the two smallest values which I saved under the variable minNums[0] & minNums[1] and sort thru the numbers!
+First I created an xCount & oCount and set to zero and return xCount === oCount.
 
- var minNums = [numbers[0], numbers[1]].sort(function(x, y) {
-   return x - y
- }); //Then I returned the sum of these two elements.
+function XO(str) {
+  let xCount = 0;
+  let oCount = 0;
 
 
+  return xCount === oCount;
+}
 
- I then created a variable for the numbers.length; for a for loop with the parameters to compare and go thru all the numbers+1 and have a if/else statement.
 
- var len = numbers.length;
- for (i = 2; i < len; i++) {
-   var num = numbers[i];
-   if (num < minNums[0]) {
-     minNums = [num, minNums[0]];
-   } else if (num < minNums[1]) {
-     minNums[1] = num;
-   }
+We have to look at every single letter (i < str.length;i++;) in the string so I had to set up a for(loop) for that!
+
+for (let i = 0; i < str.length; i++) {
+  let letter = str[i];
+  if (letter === "x" || letter === "X") {
+    xCount++;
+  } else if (letter === "o" || letter === "O") {
+    oCount++;
+  }
+}
 
 ## Sample Tests:
-describe("Your function", _ => {
-  it("should work for basic tests", _ => {
-    Test.assertEquals(sumTwoSmallestNumbers([5, 8, 12, 19, 22]), 13 , "Sum should be 13");
-    Test.assertEquals(sumTwoSmallestNumbers([15, 28, 4, 2, 43]), 6 , "Sum should be 6");
-    Test.assertEquals(sumTwoSmallestNumbers([3, 87, 45, 12, 7]), 10 , "Sum should be 10");
-    Test.assertEquals(sumTwoSmallestNumbers([23, 71, 33, 82, 1]), 24 , "Sum should be 24");
-    Test.assertEquals(sumTwoSmallestNumbers([52, 76, 14, 12, 4]), 16 , "Sum should be 16");
-  });
-});
+Test.assertEquals(XO('xo'),true);
+Test.assertEquals(XO("xxOo"),true);
+Test.assertEquals(XO("xxxm"),false);
+Test.assertEquals(XO("Oo"),false);
+Test.assertEquals(XO("ooom"),false);
+
 
 ## Lessons Learned:
 
