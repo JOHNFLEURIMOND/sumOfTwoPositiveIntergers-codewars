@@ -1,58 +1,49 @@
-![Codewars](img/mumbling.png)
+![Codewars](img/sumOf2.png)
 
 # My Awesome Project
 Question:
-This time no story, no theory. The examples below show you how to write function accum:
+Create a function that returns the sum of the two lowest positive numbers given an array of minimum 4 integers. No floats or empty arrays will be passed.
 
-Examples:
+For example, when an array is passed like [19,5,42,2,77], the output should be 7.
 
-accum("abcd");    // "A-Bb-Ccc-Dddd"
-accum("RqaEzty"); // "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
-accum("cwAt");    // "C-Ww-Aaa-Tttt"
-The parameter of accum is a string which includes only letters from a..z and A..Z.
+[10,343445353,3453445,3453545353453] should return 3453455.
 
-In this Codewars challenge, I received a question involving string manipulation.
+Hint: Do not modify the original array.
 
-## How It's Made:
+In this Codewars challenge, I received a question involving arrays.
 
-I knew started off they wanted me to write a function called accum(s); and from the sample test I saw that they wrote:
+## How It's Made
+ I decided to grab the last two numbers with min, which returns an array of the two smallest values which I saved under the variable minNums[0] & minNums[1] and sort thru the numbers!
 
-    "Test.it("Basic tests",function() {    
+ var minNums = [numbers[0], numbers[1]].sort(function(x, y) {
+   return x - y
+ }); //Then I returned the sum of these two elements.
 
-	Test.assertEquals(accum("ZpglnRxqenU"), "Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu");"
+ I then created a variable for the numbers.length; for a for loop with the parameters to compare and go thru all the numbers+1 and have a if/else statement.
 
+ var len = numbers.length;
+ for (i = 2; i < len; i++) {
+   var num = numbers[i];
+   if (num < minNums[0]) {
+     minNums = [num, minNums[0]];
+   } else if (num < minNums[1]) {
+     minNums[1] = num;
+   }
 
-
-
-
-That being said I knew off the gates that I would be given a string and depending on its index, a letter would have to repeat a certain amount of times and join them with a hyphen sign and to also capitalize the first letter.
-
-
-
-First, you need to know how to convert your string into an array of letters with a .split() method, repeat those methods with a .repeat() method, I also had to use map, push, replace and regular expressions and arrow functions.
-
-
-
-First I had to get my string into an array of letters and split it. With s.split(""); Using empty quotes as the parameter is going to split the string between every character.
-
-
-
-After I want to iterate thru all the items in my new array and I had to use a for() loop for that
-
-and create an array so I could push new items into that array. I had to take the letter and repeat that letter depending on their index(array are a zero-based index but had to add one so this will work).
-
-
-
-Next I had to go thru all the items in the new array and capitalized all the letters then join them together with a hyphen and had to use map method to make it a new array and had to use a callback function like replace every string like I did here str => str.replace() going from arrow functions back to regular express I then had to find some major help on how to target the right regex. I end up finding that /\b\w/g did what I need it to do! https://regex101.com/ is a great resource! Using an arrow function I took the letters variable I created earlier and convert to toUpperCase and .join('-') them with hyphen!!!
-
-
-
-
-## Optimizations
+## Sample Tests:
+describe("Your function", _ => {
+  it("should work for basic tests", _ => {
+    Test.assertEquals(sumTwoSmallestNumbers([5, 8, 12, 19, 22]), 13 , "Sum should be 13");
+    Test.assertEquals(sumTwoSmallestNumbers([15, 28, 4, 2, 43]), 6 , "Sum should be 6");
+    Test.assertEquals(sumTwoSmallestNumbers([3, 87, 45, 12, 7]), 10 , "Sum should be 10");
+    Test.assertEquals(sumTwoSmallestNumbers([23, 71, 33, 82, 1]), 24 , "Sum should be 24");
+    Test.assertEquals(sumTwoSmallestNumbers([52, 76, 14, 12, 4]), 16 , "Sum should be 16");
+  });
+});
 
 ## Lessons Learned:
 
-How to properly use .map(), .replace(), .join(), regular expressions, arrow expressions, for() loops, .repeat, .split()
+How to properly use .sort(), .length, for(loops), if/else statements help me create a function that returns the sum of the two lowest positive numbers given an array of minimum 4 integers.
 ## portfolio:
 
 **WEBSITE:** https:/johnfleurimond.com
