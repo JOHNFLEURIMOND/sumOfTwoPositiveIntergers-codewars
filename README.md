@@ -37,6 +37,26 @@ for (let i = 0; i < str.length; i++) {
   }
 }
 
+In the for(loop) I had to create a variable that made it easier to right the single letter in the string with let letter = str[i]; The if/else statements check for the letter and if it sees a x or X it will increase the count and do the same for o or O!
+
+
+all together it gives us.
+
+function XO(str) {
+  let xCount = 0;
+  let oCount = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    let letter = str[i];
+    if (letter === "x" || letter === "X") {
+      xCount++;
+    } else if (letter === "o" || letter === "O") {
+      oCount++;
+    }
+  }
+  return xCount === oCount;
+}
+
 ## Sample Tests:
 Test.assertEquals(XO('xo'),true);
 Test.assertEquals(XO("xxOo"),true);
