@@ -13,11 +13,13 @@ Hint: Do not modify the original array.
 In this Codewars challenge, I received a question involving arrays.
 
 ## How It's Made
- I decided to grab the last two numbers with min, which returns an array of the two smallest values which I saved under the variable minNums[0] & minNums[1] and sort thru the numbers!
+ I decided to grab the last two numbers with minNums, which returns an array of the two smallest values which I saved under the variable minNums[0] & minNums[1] and sort thru the numbers!
 
  var minNums = [numbers[0], numbers[1]].sort(function(x, y) {
    return x - y
  }); //Then I returned the sum of these two elements.
+
+
 
  I then created a variable for the numbers.length; for a for loop with the parameters to compare and go thru all the numbers+1 and have a if/else statement.
 
@@ -50,4 +52,4 @@ How to properly use .sort(), .length, for(loops), if/else statements help me cre
 
 
 
-## Happy Coding
+## Happy Coding!!!!
